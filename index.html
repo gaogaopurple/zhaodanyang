@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>赵丹阳 · 私人财富律师 | 守护企业主的家业</title>
+<meta name="description" content="赵丹阳，国内知名私人财富律师，广东益道律师事务所主任律师，执业19年，「家业守护六+一模型」创立者，深耕大湾区，熟悉香港与跨境资产规划。">
+<style>
+  :root{
+    --green:#0c261d; --green2:#123527; --green3:#17402f;
+    --panel:rgba(255,255,255,.035); --panel-b:rgba(201,168,106,.28);
+    --gold:#c9a86a; --gold-d:#b8933f; --gold-l:#dcc48c;
+    --cream:#ece7d8; --soft:#c3ccc0; --muted:#8fa196;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Songti SC","STSong",Georgia,"PingFang SC","Microsoft YaHei",serif;
+    color:var(--cream);
+    background:linear-gradient(180deg,#0b221a 0%,#0c261d 40%,#0a1f18 100%);
+    line-height:1.9; -webkit-font-smoothing:antialiased;
+  }
+  .container{max-width:1080px; margin:0 auto; padding:0 30px}
+  a{color:inherit}
+
+  /* ===== 导航 ===== */
+  nav{position:sticky; top:0; z-index:50; background:rgba(10,31,24,.9);
+      backdrop-filter:blur(10px); border-bottom:1px solid rgba(201,168,106,.22)}
+  nav .container{display:flex; align-items:center; justify-content:space-between; height:66px}
+  nav .brand{font-size:20px; letter-spacing:3px; color:var(--cream)}
+  nav .brand span{color:var(--gold)}
+  nav ul{display:flex; gap:26px; list-style:none}
+  nav ul a{color:var(--soft); text-decoration:none; font-size:15px; letter-spacing:1px; transition:.2s}
+  nav ul a:hover{color:var(--gold-l)}
+  @media(max-width:760px){ nav ul{display:none} }
+
+  /* ===== 首屏 ===== */
+  .hero{position:relative; overflow:hidden}
+  .hero .frame{
+    position:absolute; inset:22px; border:1px solid rgba(201,168,106,.25);
+    border-radius:4px; pointer-events:none;
+  }
+  .hero .container{
+    display:grid; grid-template-columns:320px 1fr; gap:50px; align-items:center;
+    padding:74px 30px 80px; position:relative; z-index:2;
+  }
+  .eyebrow{color:var(--gold); letter-spacing:6px; font-size:13px; margin-bottom:16px}
+  .hero h1{font-size:52px; letter-spacing:8px; font-weight:600; margin-bottom:18px}
+  .hero .roles{font-size:18px; color:var(--cream); line-height:1.7}
+  .hero .roles b{color:var(--gold-l); font-weight:600}
+  .hero .sub{color:var(--muted); font-size:15px; letter-spacing:1px; margin:14px 0 22px}
+  .hero .lead{font-size:16.5px; color:var(--soft); max-width:560px; margin-bottom:16px}
+  .hero .vision{
+    display:inline-block; color:var(--gold-l); font-size:16px; letter-spacing:1px;
+    border-left:2px solid var(--gold); padding-left:14px; margin-bottom:30px;
+  }
+  .cta{display:flex; gap:14px; flex-wrap:wrap}
+  .btn{display:inline-block; padding:14px 30px; border-radius:3px; text-decoration:none;
+       font-size:15px; letter-spacing:2px; transition:.2s}
+  .btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-d)); color:#20180a; font-weight:600}
+  .btn-gold:hover{filter:brightness(1.08)}
+  .btn-ghost{border:1px solid rgba(201,168,106,.5); color:var(--gold-l)}
+  .btn-ghost:hover{border-color:var(--gold-l); background:rgba(201,168,106,.08)}
+
+  /* 头像 */
+  .portrait{aspect-ratio:3/4; border-radius:4px; overflow:hidden; position:relative;
+    border:1px solid rgba(201,168,106,.55); box-shadow:0 24px 60px rgba(0,0,0,.5);
+    background:linear-gradient(135deg,#1a3227,#0c1f18)}
+  .portrait img{width:100%; height:100%; object-fit:cover; display:block}
+  .portrait .ph{position:absolute; inset:0; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; color:var(--muted); text-align:center; padding:20px}
+  .portrait .ph b{color:var(--gold-l); font-size:16px; margin-bottom:8px}
+  .portrait .ph span{font-size:13px; line-height:1.7}
+  @media(max-width:820px){
+    .hero .container{grid-template-columns:1fr; gap:34px; padding:54px 30px}
+    .hero h1{font-size:40px; letter-spacing:6px}
+    .portrait{max-width:270px; margin:0 auto}
+  }
+
+  /* ===== 数据条 ===== */
+  .stats{border-top:1px solid rgba(201,168,106,.2); border-bottom:1px solid rgba(201,168,106,.2);
+    background:rgba(0,0,0,.15)}
+  .stats .container{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;
+    text-align:center; padding:34px 30px}
+  .stats .num{font-size:36px; color:var(--gold-l); font-weight:600}
+  .stats .num small{font-size:16px; margin-left:2px}
+  .stats .lbl{font-size:14px; color:var(--soft); letter-spacing:1px; margin-top:4px}
+  @media(max-width:720px){ .stats .container{grid-template-columns:repeat(2,1fr); gap:28px} }
+
+  /* ===== 区块通用 ===== */
+  section.block{padding:82px 0}
+  .kicker{color:var(--gold); letter-spacing:5px; font-size:12px; text-align:center; margin-bottom:14px}
+  h2.title{font-size:30px; text-align:center; letter-spacing:2px; margin-bottom:16px; color:var(--cream)}
+  .title-rule{width:60px; height:2px; background:linear-gradient(90deg,transparent,var(--gold),transparent); margin:0 auto 46px}
+
+  /* ===== 六维模型（重点） ===== */
+  .model{background:linear-gradient(180deg,rgba(23,64,47,.55),rgba(12,38,29,.55));
+    border-top:1px solid rgba(201,168,106,.22); border-bottom:1px solid rgba(201,168,106,.22)}
+  .model .lead{max-width:760px; margin:0 auto 40px; text-align:center; font-size:18px; color:var(--soft); line-height:2}
+  .model .lead b{color:var(--gold-l)}
+  .dims{display:grid; grid-template-columns:repeat(6,1fr); gap:16px; max-width:960px; margin:0 auto 20px}
+  @media(max-width:760px){ .dims{grid-template-columns:repeat(3,1fr)} }
+  @media(max-width:420px){ .dims{grid-template-columns:repeat(2,1fr)} }
+  .dim{text-align:center; padding:26px 10px; border:1px solid rgba(201,168,106,.25);
+    border-radius:6px; background:var(--panel); transition:.25s}
+  .dim:hover{border-color:var(--gold); background:rgba(201,168,106,.07); transform:translateY(-3px)}
+  .dim .zh{font-size:20px; color:var(--cream); letter-spacing:2px}
+  .dim .en{font-size:11px; color:var(--muted); letter-spacing:2px; margin-top:6px}
+  .plus-one{max-width:960px; margin:0 auto 42px; text-align:center; color:var(--gold-l);
+    font-size:16px; letter-spacing:1px; border:1px dashed rgba(201,168,106,.4);
+    border-radius:6px; padding:16px}
+  .plus-one b{color:var(--gold)}
+  .model-cta{text-align:center}
+  .model-cta .hint{color:var(--muted); font-size:14px; margin-top:14px; letter-spacing:1px}
+
+  /* ===== 使命 ===== */
+  .mission{max-width:820px; margin:0 auto; text-align:center; font-size:19px; color:var(--soft); line-height:2.1}
+  .mission strong{color:var(--gold-l)}
+
+  /* ===== 资历 ===== */
+  .creds{display:flex; flex-wrap:wrap; gap:12px; justify-content:center; max-width:920px; margin:0 auto}
+  .creds span{background:var(--panel); border:1px solid rgba(201,168,106,.3);
+    border-radius:999px; padding:9px 20px; font-size:15px; color:var(--cream)}
+  .creds span.hl{background:linear-gradient(135deg,var(--gold),var(--gold-d)); color:#20180a; border:none; font-weight:600}
+
+  /* ===== 两栏 ===== */
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:26px; max-width:960px; margin:0 auto}
+  @media(max-width:760px){ .grid2{grid-template-columns:1fr} }
+  .card{background:var(--panel); border:1px solid rgba(201,168,106,.25); border-radius:10px; padding:32px 30px}
+  .card h3{color:var(--gold-l); font-size:19px; margin-bottom:18px; display:flex; align-items:center; gap:10px}
+  .card h3::before{content:""; width:6px; height:20px; background:var(--gold); display:inline-block; border-radius:2px}
+  .card ul{list-style:none}
+  .card li{padding:8px 0 8px 22px; position:relative; color:var(--soft); font-size:15.5px; border-bottom:1px dashed rgba(201,168,106,.18)}
+  .card li:last-child{border-bottom:none}
+  .card li::before{content:"§"; position:absolute; left:0; color:var(--gold)}
+
+  /* ===== 授课风格 ===== */
+  .styles{display:grid; grid-template-columns:repeat(4,1fr); gap:20px; max-width:960px; margin:0 auto}
+  @media(max-width:760px){ .styles{grid-template-columns:1fr 1fr} }
+  .style{text-align:center; padding:24px 16px}
+  .style .icn{width:56px; height:56px; margin:0 auto 14px; border-radius:50%;
+    border:1px solid var(--gold); color:var(--gold-l); display:flex; align-items:center;
+    justify-content:center; font-size:22px}
+  .style h4{color:var(--cream); font-size:16px; margin-bottom:6px}
+  .style p{font-size:14px; color:var(--muted)}
+
+  /* ===== 战绩 ===== */
+  .cases{display:grid; grid-template-columns:1fr 1fr; gap:20px; max-width:960px; margin:0 auto}
+  @media(max-width:760px){ .cases{grid-template-columns:1fr} }
+  .case{background:var(--panel); border-left:3px solid var(--gold); border-radius:6px; padding:22px 24px}
+  .case h4{color:var(--gold-l); font-size:16.5px; margin-bottom:6px}
+  .case p{color:var(--muted); font-size:14.5px}
+
+  /* ===== 客户 ===== */
+  .clients{max-width:960px; margin:0 auto}
+  .client-group{margin-bottom:26px}
+  .client-group h4{color:var(--gold); font-size:15px; letter-spacing:2px; margin-bottom:12px}
+  .client-group .tags{display:flex; flex-wrap:wrap; gap:9px}
+  .client-group .tags span{background:var(--panel); border:1px solid rgba(201,168,106,.22);
+    border-radius:4px; padding:6px 13px; font-size:14px; color:var(--soft)}
+
+  /* ===== 照片墙 ===== */
+  .gallery{column-count:3; column-gap:16px; max-width:1040px; margin:0 auto}
+  @media(max-width:760px){ .gallery{column-count:2; column-gap:12px} }
+  @media(max-width:460px){ .gallery{column-count:1} }
+  .photo{break-inside:avoid; -webkit-column-break-inside:avoid; margin:0 0 16px; border-radius:8px;
+    overflow:hidden; position:relative; display:block;
+    background:linear-gradient(135deg,#173f2e,#0e2a20); border:1px solid rgba(201,168,106,.25)}
+  .photo img{width:100%; height:auto; display:block}
+  .photo .ph{min-height:180px; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; color:var(--muted); text-align:center; padding:10px}
+  .photo .ph b{font-size:26px; color:var(--gold); opacity:.55}
+  .photo .ph span{font-size:12px; margin-top:4px}
+  .gallery-note{text-align:center; color:var(--muted); font-size:14px; margin-top:26px}
+
+  /* ===== 页脚 ===== */
+  footer{background:rgba(0,0,0,.28); border-top:1px solid rgba(201,168,106,.25);
+    padding:66px 0 42px; text-align:center}
+  footer h2{font-size:28px; letter-spacing:2px; margin-bottom:14px}
+  footer p.sub{color:var(--muted); margin-bottom:30px; letter-spacing:1px}
+  .contact{display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:24px}
+  .contact a{color:var(--cream); text-decoration:none; border:1px solid rgba(201,168,106,.4);
+    padding:12px 26px; border-radius:3px; font-size:15px; letter-spacing:1px; transition:.2s}
+  .contact a:hover{border-color:var(--gold-l); color:var(--gold-l)}
+  .phone{font-size:30px; color:var(--gold-l); letter-spacing:4px; margin:10px 0 6px}
+  .disclaimer{color:#6d7d72; font-size:12.5px; line-height:1.9; max-width:640px; margin:26px auto 0}
+  footer .copy{color:#6d7d72; font-size:13px; border-top:1px solid rgba(201,168,106,.14); padding-top:24px; margin-top:26px}
+</style>
+</head>
+<body>
+
+<!-- ===== 导航 ===== -->
+<nav>
+  <div class="container">
+    <div class="brand">赵丹阳<span> · 私人财富律师</span></div>
+    <ul>
+      <li><a href="#model">六维模型</a></li>
+      <li><a href="#about">使命</a></li>
+      <li><a href="#expertise">专长</a></li>
+      <li><a href="#cases">战绩</a></li>
+      <li><a href="#gallery">授课风采</a></li>
+      <li><a href="#contact">联系</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== 首屏 ===== -->
+<header class="hero">
+  <div class="frame"></div>
+  <div class="container">
+    <!-- 头像位：把形象照命名为 portrait.jpg 放入 photos 文件夹 -->
+    <div class="portrait">
+      <img src="photos/portrait.jpg" alt="赵丹阳" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="ph" style="display:none">
+        <b>放置形象照</b>
+        <span>命名 portrait.jpg<br>放入 photos 文件夹</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="eyebrow">FAMILY LEGACY GUARDIAN · 守 护 企 业 主 的 家 业</div>
+      <h1>赵丹阳</h1>
+      <div class="roles">
+        广东益道律师事务所 · 主任律师<br>
+        <b>「家业守护六 + 一模型」创立者</b>
+      </div>
+      <div class="sub">国内知名私人财富律师 · 执业 19 年 · 深耕大湾区 · 熟悉香港与跨境资产规划</div>
+      <p class="lead">将「法律 + 金融」合二为一，为企业家找准风险、守住家业、成就传承。以自创的「家业守护六 + 一模型」，系统化诊断并守护高净值家族的每一面风险。</p>
+      <div class="vision">愿景：助力 1000 个企业家，完成家业保护与传承。</div>
+      <div class="cta">
+        <!-- 风险自测链接：指向同文件夹里的 quiz.html -->
+        <a href="quiz.html" class="btn btn-gold" target="_blank">家业风险六维快测 · 免费自测</a>
+        <a href="#contact" class="btn btn-ghost">预约咨询</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== 数据条 ===== -->
+<div class="stats">
+  <div class="container">
+    <div><div class="num">19<small>年</small></div><div class="lbl">执业实战经验</div></div>
+    <div><div class="num">100<small>亿+</small></div><div class="lbl">经手项目金额</div></div>
+    <div><div class="num">30<small>+</small></div><div class="lbl">家族传承服务</div></div>
+    <div><div class="num">1000<small>+</small></div><div class="lbl">服务及培训企业</div></div>
+  </div>
+</div>
+
+<!-- ===== 六维模型（核心） ===== -->
+<section class="block model" id="model">
+  <div class="container">
+    <div class="kicker">SIGNATURE FRAMEWORK · 核 心 方 法 论</div>
+    <h2 class="title">家业守护 · 六 + 一模型</h2>
+    <div class="title-rule"></div>
+    <p class="lead">企业家的家业风险，从来不是一个点，而是<b>六个面</b>。<br>我只做一件事：<b>先诊断，后开方，守护您的家业。</b></p>
+
+    <div class="dims">
+      <div class="dim"><div class="zh">婚姻</div><div class="en">MATRIMONIAL</div></div>
+      <div class="dim"><div class="zh">继承</div><div class="en">SUCCESSION</div></div>
+      <div class="dim"><div class="zh">税务</div><div class="en">TAX & CRS</div></div>
+      <div class="dim"><div class="zh">债务</div><div class="en">LIABILITY</div></div>
+      <div class="dim"><div class="zh">股权</div><div class="en">EQUITY</div></div>
+      <div class="dim"><div class="zh">传承</div><div class="en">LEGACY</div></div>
+    </div>
+
+    <div class="plus-one">
+      <b>+ 一：</b>在六维之上，特别加入<b>大湾区与跨境风险</b>——跨境婚姻、跨境继承、离岸资产与 CRS，为深耕大湾区的企业家守护每一面。
+    </div>
+  </div>
+</section>
+
+<!-- ===== 使命 ===== -->
+<section class="block" id="about">
+  <div class="container">
+    <div class="kicker">MY MISSION · 我 的 使 命</div>
+    <h2 class="title">做企业主家业的守护者</h2>
+    <div class="title-rule"></div>
+    <p class="mission">
+      我是赵丹阳，一名深耕私人财富领域的<strong>私人财富律师</strong>。
+      我相信，真正的财富不只是账面上的数字，而是<strong>能安全穿越周期、传承给下一代的家业</strong>。
+      凭借法律与金融的双重功底，我帮助企业家提前识别风险、优化股权治理、搭建家族信托、规划跨境传承——
+      让创业者拼下来的成果，<strong>不因风险而崩塌，不因传承而流失</strong>。
+    </p>
+  </div>
+</section>
+
+<!-- ===== 专业背景（已去除学校） ===== -->
+<section class="block">
+  <div class="container">
+    <div class="kicker">CREDENTIALS · 专 业 背 景</div>
+    <h2 class="title">权威背书 · 实战底蕴</h2>
+    <div class="title-rule"></div>
+    <div class="creds">
+      <span class="hl">广东益道律师事务所 · 主任律师</span>
+      <span>中央电视台《法律大讲堂》主讲人</span>
+      <span>深圳电视台常驻嘉宾律师</span>
+      <span>曾任 中国联通深圳公司 法律部经理</span>
+      <span>世界华人协会 法律顾问</span>
+      <span>世界华商基金会 法律顾问</span>
+      <span>深圳前海人民法院 调解专家</span>
+      <span>中央国资委 合规讲师</span>
+      <span>辽宁工信厅 法律顾问</span>
+      <span>联合国执委会 ESG 证书</span>
+      <span>国家二级法律顾问 · 中级经济师</span>
+      <span>基金 / 证券 / 期货从业资格</span>
+      <span>法律自媒体「赵丹阳律师」全网粉丝 20万+</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 擅长领域 + 课程 ===== -->
+<section class="block" id="expertise">
+  <div class="container">
+    <div class="kicker">EXPERTISE · 专 业 所 长</div>
+    <h2 class="title">擅长领域 · 主讲课程</h2>
+    <div class="title-rule"></div>
+    <div class="grid2">
+      <div class="card">
+        <h3>擅长领域</h3>
+        <ul>
+          <li>家族财富传承与家族信托搭建</li>
+          <li>保险金信托与大额保单规划</li>
+          <li>家族办公室与家族宪章</li>
+          <li>股权设计、治理与激励</li>
+          <li>企业合规与法律风险防范</li>
+          <li>税务、CRS 与跨境资产传承</li>
+          <li>投融资全流程法律服务</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>主讲课程</h3>
+        <ul>
+          <li>《法商产说会及陪谈》</li>
+          <li>《企业家法律风险防范及财富传承》</li>
+          <li>《家族信托实务》</li>
+          <li>《保险信托与财富传承》</li>
+          <li>《家族股权治理实务》</li>
+          <li>《大额保单营销》</li>
+          <li>《企业合规与风险防范》</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 授课风格 ===== -->
+<section class="block">
+  <div class="container">
+    <div class="kicker">TEACHING STYLE · 授 课 风 格</div>
+    <h2 class="title">让枯燥的法律，听得懂、用得上</h2>
+    <div class="title-rule"></div>
+    <div class="styles">
+      <div class="style"><div class="icn">壹</div><h4>浅入深出</h4><p>把法律融入实际工作，增强场景感</p></div>
+      <div class="style"><div class="icn">贰</div><h4>引导思维</h4><p>通过讨论，带入法律思维模式</p></div>
+      <div class="style"><div class="icn">叁</div><h4>实战干货</h4><p>大量真实案例，代入感更强</p></div>
+      <div class="style"><div class="icn">肆</div><h4>气氛活跃</h4><p>在轻松愉悦中获取满满干货</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 代表战绩 ===== -->
+<section class="block" id="cases">
+  <div class="container">
+    <div class="kicker">KEY CASES · 代 表 战 绩</div>
+    <h2 class="title">用结果说话</h2>
+    <div class="title-rule"></div>
+    <div class="cases">
+      <div class="case"><h4>某省首富 · 家族信托搭建</h4><p>搭建国内及离岸信托框架，累计装入信托资产超 8 亿元。</p></div>
+      <div class="case"><h4>上市公司股东 · A+B 信托设计</h4><p>为上市公司股东定制信托方案，兼顾控制权与传承。</p></div>
+      <div class="case"><h4>四地联动 · 家族信托</h4><p>为首家族做美国、香港、瑞士、国内四地资产联动的家族信托。</p></div>
+      <div class="case"><h4>私行产说会 · 保险金信托</h4><p>六维成交系统陪谈，10位客户现场或一周内签约 300万–2000万不等。</p></div>
+      <div class="case"><h4>上市公司股东 · 和平离婚</h4><p>谈判陪跑 + 家族信托，离婚过程股价完全无波动。</p></div>
+      <div class="case"><h4>凯旋集团 · 香港上市</h4><p>选择最优上市路径，仅用 6 个月协助客户在港成功上市。</p></div>
+      <div class="case"><h4>上市公司股东 · 继承案</h4><p>提前规划股权传承，完成继承交接，上市公司股价全程无波动。</p></div>
+      <div class="case"><h4>跨境资产 · 税务与 CRS</h4><p>为世界多地有资产的客户，综合多地税务制定最优信托方案。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 服务客户 ===== -->
+<section class="block" id="clients">
+  <div class="container">
+    <div class="kicker">CLIENTS · 部 分 服 务 客 户</div>
+    <h2 class="title">受托于金融巨头与国之重器</h2>
+    <div class="title-rule"></div>
+    <div class="clients">
+      <div class="client-group">
+        <h4>银行 · 私行 · 保险</h4>
+        <div class="tags">
+          <span>中国银行</span><span>招商银行及私行</span><span>工商银行及私行</span><span>农业银行及私行</span>
+          <span>平安银行及私行</span><span>邮储银行及私行</span><span>汇丰银行私行</span><span>渣打银行</span>
+          <span>星展银行</span><span>中信私行</span><span>交银私行</span><span>中国人寿</span>
+          <span>平安保险</span><span>泰康保险</span><span>友邦保险</span><span>太平保险</span>
+        </div>
+      </div>
+      <div class="client-group">
+        <h4>国央企 · 上市公司</h4>
+        <div class="tags">
+          <span>中国石油</span><span>中海油</span><span>南方电网</span><span>中国中车</span>
+          <span>贵州茅台</span><span>宁德时代</span><span>寒武纪</span><span>歌尔股份</span>
+          <span>招商局集团</span><span>华电国际</span><span>中国航天</span><span>深圳地铁</span>
+        </div>
+      </div>
+      <div class="client-group">
+        <h4>政府机关 · 高校</h4>
+        <div class="tags">
+          <span>中央国资委</span><span>辽宁工信厅</span><span>江西国资委</span>
+          <span>兰州大学</span><span>中山大学</span><span>南方科技大学</span><span>深圳大学</span>
+          <span>上海交大</span><span>清华大学</span><span>西南交大</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 授课照片墙 ===== -->
+<section class="block" id="gallery">
+  <div class="container">
+    <div class="kicker">GALLERY · 授 课 风 采</div>
+    <h2 class="title">课堂现场</h2>
+    <div class="title-rule"></div>
+    <div class="gallery">
+      <!-- 照片位：图片按 photos/1.jpg、2.jpg…… 命名放入 photos 文件夹；没放的位置会自动隐藏，不留空 -->
+      <div class="photo"><img src="photos/1.jpg" alt="授课照片" onerror="this.parentElement.style.display='none'"></div>
+      <div class="photo"><img src="photos/2.jpg" alt="授课照片" onerror="this.parentElement.style.display='none'"></div>
+      <div class="photo"><img src="photos/3.jpg" alt="授课照片" onerror="this.parentElement.style.display='none'"></div>
+      <div class="photo"><img src="photos/4.jpg" alt="授课照片" onerror="this.parentElement.style.display='none'"></div>
+      <div class="photo"><img src="photos/5.jpg" alt="授课照片" onerror="this.parentElement.style.display='none'"></div>
+      <div class="photo"><img src="photos/6.jpg" alt="授课照片" onerror="this.parentElement.style.display='none'"></div>
+      <div class="photo"><img src="photos/7.jpg" alt="授课照片" onerror="this.parentElement.style.display='none'"></div>
+      <div class="photo"><img src="photos/8.jpg" alt="授课照片" onerror="this.parentElement.style.display='none'"></div>
+      <div class="photo"><img src="photos/9.jpg" alt="授课照片" onerror="this.parentElement.style.display='none'"></div>
+      <div class="photo"><img src="photos/10.jpg" alt="授课照片" onerror="this.parentElement.style.display='none'"></div>
+      <div class="photo"><img src="photos/11.jpg" alt="授课照片" onerror="this.parentElement.style.display='none'"></div>
+      <div class="photo"><img src="photos/12.jpg" alt="授课照片" onerror="this.parentElement.style.display='none'"></div>
+      <div class="photo"><img src="photos/13.jpg" alt="授课照片" onerror="this.parentElement.style.display='none'"></div>
+      <div class="photo"><img src="photos/14.jpg" alt="授课照片" onerror="this.parentElement.style.display='none'"></div>
+      <div class="photo"><img src="photos/15.jpg" alt="授课照片" onerror="this.parentElement.style.display='none'"></div>
+      <div class="photo"><img src="photos/16.jpg" alt="授课照片" onerror="this.parentElement.style.display='none'"></div>
+      <div class="photo"><img src="photos/17.jpg" alt="授课照片" onerror="this.parentElement.style.display='none'"></div>
+      <div class="photo"><img src="photos/18.jpg" alt="授课照片" onerror="this.parentElement.style.display='none'"></div>
+      <div class="photo"><img src="photos/19.jpg" alt="授课照片" onerror="this.parentElement.style.display='none'"></div>
+      <div class="photo"><img src="photos/20.jpg" alt="授课照片" onerror="this.parentElement.style.display='none'"></div>
+      <div class="photo"><img src="photos/21.jpg" alt="授课照片" onerror="this.parentElement.style.display='none'"></div>
+      <div class="photo"><img src="photos/22.jpg" alt="授课照片" onerror="this.parentElement.style.display='none'"></div>
+      <div class="photo"><img src="photos/23.jpg" alt="授课照片" onerror="this.parentElement.style.display='none'"></div>
+      <div class="photo"><img src="photos/24.jpg" alt="授课照片" onerror="this.parentElement.style.display='none'"></div>
+      <div class="photo"><img src="photos/25.jpg" alt="授课照片" onerror="this.parentElement.style.display='none'"></div>
+      <div class="photo"><img src="photos/26.jpg" alt="授课照片" onerror="this.parentElement.style.display='none'"></div>
+      <div class="photo"><img src="photos/27.jpg" alt="授课照片" onerror="this.parentElement.style.display='none'"></div>
+      <div class="photo"><img src="photos/28.jpg" alt="授课照片" onerror="this.parentElement.style.display='none'"></div>
+      <div class="photo"><img src="photos/29.jpg" alt="授课照片" onerror="this.parentElement.style.display='none'"></div>
+      <div class="photo"><img src="photos/30.jpg" alt="授课照片" onerror="this.parentElement.style.display='none'"></div>
+    </div>
+    <p class="gallery-note">已预留 30 个照片位，放几张显示几张，空位自动隐藏。超过 30 张再告诉我加位置即可。</p>
+  </div>
+</section>
+
+<!-- ===== 联系 ===== -->
+<footer id="contact">
+  <div class="container">
+    <div class="kicker">BY APPOINTMENT · 预 约 专 线</div>
+    <h2>预约咨询 · 家业守护</h2>
+    <p class="sub">为您的企业与家族，提供切实可行的法商方案</p>
+    <div class="phone">130 8886 6687</div>
+    <div class="contact">
+      <a href="tel:13088866687">电话 · 微信同号</a>
+      <a href="#">微信公众号：赵丹阳律师</a>
+    </div>
+    <p class="dis
