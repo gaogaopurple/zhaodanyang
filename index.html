@@ -183,6 +183,12 @@
     padding:12px 26px; border-radius:3px; font-size:15px; letter-spacing:1px; transition:.2s}
   .contact a:hover{border-color:var(--gold-l); color:var(--gold-l)}
   .phone{font-size:30px; color:var(--gold-l); letter-spacing:4px; margin:10px 0 6px}
+  .qrs{display:flex; gap:34px; justify-content:center; flex-wrap:wrap; margin:8px 0 30px}
+  .qr{width:190px}
+  .qr img{width:190px; height:190px; object-fit:cover; border-radius:10px;
+    border:1px solid rgba(201,168,106,.45); background:#fff; padding:8px; display:block}
+  .qr .cap{color:var(--gold-l); font-size:15px; letter-spacing:1px; margin-top:12px}
+  .qr .cap small{display:block; color:var(--muted); font-size:12.5px; letter-spacing:0; margin-top:3px}
   .disclaimer{color:#6d7d72; font-size:12.5px; line-height:1.9; max-width:640px; margin:26px auto 0}
   footer .copy{color:#6d7d72; font-size:13px; border-top:1px solid rgba(201,168,106,.14); padding-top:24px; margin-top:26px}
 </style>
@@ -465,6 +471,17 @@
     <div class="phone">130 8886 6687</div>
     <div class="contact">
       <a href="tel:13088866687">电话 · 微信同号</a>
-      <a href="#">微信公众号：赵丹阳律师</a>
+    </div>
+
+    <!-- 二维码：把图片命名为 wechat.jpg（个人微信）、mp.jpg（公众号）放到和 index.html 同一层；没放的会自动隐藏 -->
+    <div class="qrs">
+      <div class="qr">
+        <img src="wechat.jpg" alt="微信二维码" onerror="this.parentElement.style.display='none'">
+        <div class="cap">扫码加我微信<small>赵丹阳律师 · 保护你的家业</small></div>
+      </div>
+      <div class="qr">
+        <img src="mp.jpg" alt="公众号二维码" onerror="this.parentElement.style.display='none'">
+        <div class="cap">关注公众号<small>赵丹阳律师</small></div>
+      </div>
     </div>
     <p class="dis
