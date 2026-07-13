@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>家业风险六维快测 · 赵丹阳家业守护</title>
+<style>
+  :root{
+    --bg1:#0F2A22; --bg2:#123127; --gold:#C9A961; --goldL:#E3CD97;
+    --ivory:#F2EDDD; --ivoryMute:rgba(242,237,221,.66); --ivoryFaint:rgba(242,237,221,.4);
+    --glass:rgba(255,255,255,.05); --glassTop:rgba(255,255,255,.1); --glassBorder:rgba(255,255,255,.16);
+    --green:#5DCAA5; --amber:#EF9F27; --red:#E24B4A;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{background:#0c0c0c;height:100%;}
+  body{
+    font-family:"Songti SC","STSong","PingFang SC","Noto Serif SC",serif;
+    display:flex;justify-content:center;min-height:100vh;
+  }
+  .shell{
+    width:100%;max-width:480px;min-height:100vh;
+    background:linear-gradient(165deg,var(--bg1) 0%,var(--bg2) 50%,var(--bg1) 100%);
+    position:relative;overflow:hidden;display:flex;flex-direction:column;
+  }
+  .glow{position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:480px;height:340px;
+    background:radial-gradient(ellipse at center, rgba(201,169,97,.16) 0%, transparent 70%);pointer-events:none;}
+  .frame{position:absolute;inset:8px;border:1px solid rgba(201,169,97,.28);pointer-events:none;}
+
+  .top{padding:28px 26px 0;position:relative;text-align:center;}
+  .top .brand{font-size:11px;letter-spacing:5px;color:var(--goldL);}
+  .top .brand2{margin-top:4px;font-family:"Helvetica Neue",Arial,sans-serif;font-size:8px;letter-spacing:3px;color:var(--ivoryFaint);text-transform:uppercase;}
+
+  .screen{flex:1;display:none;flex-direction:column;padding:26px 26px 34px;position:relative;}
+  .screen.active{display:flex;}
+
+  /* ---------- 开始页 ---------- */
+  #intro{justify-content:center;align-items:center;text-align:center;flex:1;}
+  #intro h1{font-size:26px;letter-spacing:8px;color:var(--ivory);font-weight:600;margin-top:18px;line-height:1.7;}
+  #intro .sub{margin-top:14px;font-size:13px;letter-spacing:2px;color:var(--ivoryMute);line-height:2;max-width:320px;}
+  .dimrow{display:flex;gap:8px;margin-top:26px;flex-wrap:wrap;justify-content:center;}
+  .dimchip{font-size:11px;letter-spacing:2px;color:var(--goldL);border:1px solid rgba(201,169,97,.4);padding:5px 12px;border-radius:100px;}
+  .privacy{margin-top:28px;background:var(--glass);border:1px solid var(--glassBorder);border-radius:16px;padding:16px 18px;text-align:left;}
+  .privacy .t{font-size:12px;letter-spacing:2px;color:var(--goldL);margin-bottom:8px;}
+  .privacy p{font-size:11.5px;letter-spacing:.5px;color:var(--ivoryMute);line-height:1.9;}
+  .btn{
+    margin-top:30px;width:100%;padding:16px;background:var(--gold);color:#123127;
+    border:none;border-radius:100px;font-size:15px;letter-spacing:4px;font-weight:600;
+    font-family:inherit;
+  }
+  .btn:active{opacity:.85;}
+  .btn-ghost{
+    margin-top:14px;width:100%;padding:14px;background:transparent;color:var(--ivoryMute);
+    border:1px solid rgba(201,169,97,.4);border-radius:100px;font-size:13px;letter-spacing:3px;
+    font-family:inherit;
+  }
+
+  /* ---------- 答题页 ---------- */
+  #quiz{}
+  .qmeta{display:flex;justify-content:space-between;align-items:baseline;}
+  .qmeta .dim{font-size:12px;letter-spacing:3px;color:var(--goldL);}
+  .qmeta .idx{font-size:11px;letter-spacing:1px;color:var(--ivoryFaint);font-family:"Helvetica Neue",Arial,sans-serif;}
+  .barwrap{margin-top:12px;height:3px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden;}
+  .barfill{height:100%;background:var(--gold);width:0%;transition:width .3s ease;}
+
+  .qbody{flex:1;display:flex;align-items:center;margin-top:14px;}
+  .qtext{font-size:19px;letter-spacing:1.5px;color:var(--ivory);line-height:1.9;}
+
+  .opts{display:flex;flex-direction:column;gap:12px;margin-top:6px;}
+  .opt{
+    padding:17px 20px;border-radius:16px;border:1px solid var(--glassBorder);
+    background:linear-gradient(180deg,var(--glassTop) 0%, var(--glass) 100%);
+    color:var(--ivory);font-size:15px;letter-spacing:2px;font-family:inherit;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .opt:active{border-color:var(--gold);}
+  .opt .mark{font-size:11px;color:var(--ivoryFaint);letter-spacing:1px;font-family:"Helvetica Neue",Arial,sans-serif;}
+
+  .backline{margin-top:20px;text-align:center;font-size:12px;letter-spacing:2px;color:var(--ivoryFaint);}
+
+  /* ---------- 结果页 ---------- */
+  #result{}
+  .rtitle{text-align:center;}
+  .rtitle .en{font-size:9px;letter-spacing:4px;color:var(--gold);}
+  .rtitle h2{margin-top:8px;font-size:22px;letter-spacing:6px;color:var(--ivory);font-weight:600;}
+
+  .radarwrap{margin:20px auto 6px;width:280px;}
+
+  .score-summary{text-align:center;font-size:13px;letter-spacing:1.5px;color:var(--ivoryMute);margin-top:4px;line-height:2;}
+  .score-summary b{color:var(--goldL);font-size:15px;}
+
+  .dimlist{margin-top:20px;}
+  .dimitem{display:flex;align-items:center;gap:12px;padding:10px 4px;border-top:.5px solid rgba(201,169,97,.2);}
+  .dimitem:first-child{border-top:none;}
+  .dimitem .dot{width:9px;height:9px;border-radius:50%;flex:none;}
+  .dimitem .nm{flex:1;font-size:13.5px;letter-spacing:2px;color:var(--ivory);}
+  .dimitem .sc{font-size:12px;letter-spacing:1px;color:var(--ivoryMute);}
+  .dimitem .zn{font-size:11px;letter-spacing:1.5px;padding:3px 10px;border-radius:100px;flex:none;}
+
+  .verdict{margin-top:22px;background:var(--glass);border:1px solid var(--glassBorder);border-radius:16px;padding:18px 20px;}
+  .verdict p{font-size:13px;letter-spacing:1px;color:var(--ivoryMute);line-height:2;}
+  .verdict b{color:var(--goldL);}
+
+  .actions{margin-top:22px;}
+  .contact{margin-top:22px;text-align:center;}
+  .contact .en5{font-size:9px;letter-spacing:4px;color:var(--gold);}
+  .contact .tel{margin-top:8px;font-size:21px;letter-spacing:4px;color:var(--ivory);font-weight:600;}
+  .contact .wx{margin-top:6px;font-size:11.5px;letter-spacing:2px;color:var(--ivoryMute);}
+
+  .foot{margin-top:24px;text-align:center;font-size:9.5px;letter-spacing:.5px;color:var(--ivoryFaint);line-height:1.8;}
+
+  .toast{
+    position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(20px);
+    background:var(--gold);color:#123127;padding:11px 22px;border-radius:100px;
+    font-size:13px;letter-spacing:2px;opacity:0;transition:all .3s ease;pointer-events:none;z-index:99;
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <div class="glow"></div>
+  <div class="frame"></div>
+
+  <div class="top">
+    <div class="brand">家業守護 · 六維模型</div>
+    <div class="brand2">FAMILY WEALTH PROTECTION</div>
+  </div>
+
+  <div class="screen active" id="intro">
+    <svg width="76" height="76" viewBox="0 0 200 200">
+      <polygon points="100,14 174,57 174,143 100,186 26,143 26,57" fill="none" stroke="#C9A961" stroke-width="2"/>
+      <polygon points="100,38 153,69 153,131 100,162 47,131 47,69" fill="none" stroke="#C9A961" stroke-width=".6" opacity=".55"/>
+      <text x="100" y="106" text-anchor="middle" font-size="24" fill="#F2EDDD" font-family="Songti SC,serif" font-weight="600">測</text>
+    </svg>
+    <h1>家业风险<br>六维快测</h1>
+    <div class="sub">18道题，3分钟<br>看清您家业的六面墙，哪一面还没设防</div>
+
+    <div class="dimrow">
+      <span class="dimchip">婚姻</span><span class="dimchip">继承</span><span class="dimchip">税务</span>
+      <span class="dimchip">债务</span><span class="dimchip">股权</span><span class="dimchip">传承</span>
+    </div>
+
+    <div class="privacy">
+      <div class="t">关于隐私，请放心</div>
+      <p>· 全部计算在您的手机本地完成，不会上传到任何服务器<br>
+      · 无需填写姓名、手机号或任何具体金额<br>
+      · 测完的结果只有您自己看得到，是否分享由您决定</p>
+    </div>
+
+    <button class="btn" onclick="startQuiz()">开始测试</button>
+  </div>
+
+  <div class="screen" id="quiz">
+    <div class="qmeta">
+      <span class="dim" id="q-dim">婚姻</span>
+      <span class="idx" id="q-idx">01 / 18</span>
+    </div>
+    <div class="barwrap"><div class="barfill" id="q-bar"></div></div>
+
+    <div class="qbody">
+      <div class="qtext" id="q-text">题目文本</div>
+    </div>
+
+    <div class="opts">
+      <button class="opt" onclick="answer(2)"><span>是</span><span class="mark">YES</span></button>
+      <button class="opt" onclick="answer(1)"><span>不确定</span><span class="mark">UNSURE</span></button>
+      <button class="opt" onclick="answer(0)"><span>否</span><span class="mark">NO</span></button>
+    </div>
+
+    <div class="backline" id="q-back" onclick="goBack()">‹ 上一题</div>
+  </div>
+
+  <div class="screen" id="result">
+    <div class="rtitle">
+      <div class="en">YOUR SIX-DIMENSION MAP</div>
+      <h2>您的六维雷达图</h2>
+    </div>
+
+    <div class="radarwrap"><svg id="radar" viewBox="0 0 280 280" width="100%"></svg></div>
+
+    <div class="score-summary" id="r-summary"></div>
+
+    <div class="dimlist" id="r-list"></div>
+
+    <div class="verdict" id="r-verdict"></div>
+
+    <div class="actions">
+      <button class="btn-ghost" onclick="copyResult()">复制结果文本（发给赵律师）</button>
+      <button class="btn-ghost" onclick="restart()">重新测一次</button>
+    </div>
+
+    <div class="contact">
+      <div class="en5">BY APPOINTMENT · 预约专线</div>
+      <div class="tel">130&nbsp;8886&nbsp;6687</div>
+      <div class="wx">电话&nbsp;·&nbsp;微信同号</div>
+    </div>
+
+    <div class="foot">
+      本测试为一般性自我评估工具，不构成法律意见；结果仅供参考，具体风险以专业体检为准。
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+</div>
+
+<script>
+var QUESTIONS = [
+  {dim:"婚姻", en:"MATRIMONIAL", text:"您或您的成年子女，均未签订任何婚前或婚内财产协议。"},
+  {dim:"婚姻", en:"MATRIMONIAL", text:"您为子女购置房产或出资时，未签订书面的赠与协议或借款协议。"},
+  {dim:"婚姻", en:"MATRIMONIAL", text:"夫妻双方共同持有公司股权，且从未约定婚姻变动时的股权处理方式。"},
+  {dim:"继承", en:"SUCCESSION", text:"您尚未订立遗嘱。"},
+  {dim:"继承", en:"SUCCESSION", text:"您是公司唯一或主要股东，但未安排过身故情形下的股权处理。"},
+  {dim:"继承", en:"SUCCESSION", text:"您的家人并不掌握您的完整资产清单及凭证存放位置。"},
+  {dim:"债务", en:"LIABILITY", text:"您曾为企业贷款提供个人连带责任担保。"},
+  {dim:"债务", en:"LIABILITY", text:"家庭房产曾用于企业融资抵押，或目前仍在抵押中。"},
+  {dim:"债务", en:"LIABILITY", text:"家庭没有任何在法律上隔离于企业风险之外的资产安排。"},
+  {dim:"税务", en:"TAX & CRS", text:"您不确定家庭每位成员各自的税务居民身份。"},
+  {dim:"税务", en:"TAX & CRS", text:"家庭持有境外金融账户，但不清楚CRS信息交换对自己的影响。"},
+  {dim:"税务", en:"TAX & CRS", text:"您持有离岸公司，但不确定其在经济实质、申报义务方面是否合规。"},
+  {dim:"股权", en:"EQUITY", text:"公司章程从未针对股东继承、婚变、失能等情形做过特别约定。"},
+  {dim:"股权", en:"EQUITY", text:"公司股权由夫妻平分或接近平分（如50%对50%）。"},
+  {dim:"股权", en:"EQUITY", text:"如果您突然失能或身故，没有人能够立即合法地接管公司决策。"},
+  {dim:"传承", en:"LEGACY", text:"您未设立任何形式的信托（家族信托或保险金信托）。"},
+  {dim:"传承", en:"LEGACY", text:"您计划将大额资产一次性交给子女，没有分期或附条件的机制。"},
+  {dim:"传承", en:"LEGACY", text:"您未针对子女可能的挥霍、受骗、婚变情形做过任何防护设计。"}
+];
+var DIMS = ["婚姻","继承","债务","税务","股权","传承"];
+var DIM_EN = {"婚姻":"MATRIMONIAL","继承":"SUCCESSION","债务":"LIABILITY","税务":"TAX & CRS","股权":"EQUITY","传承":"LEGACY"};
+
+var current = 0;
+var answers = new Array(18).fill(null);
+
+function showScreen(id){
+  document.querySelectorAll(".screen").forEach(function(s){ s.classList.remove("active"); });
+  document.getElementById(id).classList.add("active");
+}
+
+function startQuiz(){
+  current = 0;
+  answers = new Array(18).fill(null);
+  showScreen("quiz");
+  renderQuestion();
+}
+
+function renderQuestion(){
+  var q = QUESTIONS[current];
+  document.getElementById("q-dim").textContent = q.dim;
+  document.getElementById("q-idx").textContent = String(current+1).padStart(2,"0") + " / 18";
+  document.getElementById("q-text").textContent = q.text;
+  document.getElementById("q-bar").style.width = Math.round((current)/18*100) + "%";
+  document.getElementById("q-back").style.visibility = current === 0 ? "hidden" : "visible";
+}
+
+function answer(val){
+  answers[current] = val;
+  if(current < 17){
+    current++;
+    renderQuestion();
+  } else {
+    document.getElementById("q-bar").style.width = "100%";
+    setTimeout(computeResult, 200);
+  }
+}
+
+function goBack(){
+  if(current > 0){
+    current--;
+    renderQuestion();
+  }
+}
+
+function computeResult(){
+  var dimScores = {};
+  DIMS.forEach(function(d){ dimScores[d] = 0; });
+  QUESTIONS.forEach(function(q, i){
+    dimScores[q.dim] += (answers[i] === null ? 0 : answers[i]);
+  });
+
+  var total = 0;
+  DIMS.forEach(function(d){ total += dimScores[d]; });
+
+  drawRadar(dimScores);
+
+  var redCount = 0, yellowCount = 0;
+  DIMS.forEach(function(d){
+    var s = dimScores[d];
+    if(s >= 4) redCount++;
+    else if(s >= 2) yellowCount++;
+  });
+
+  document.getElementById("r-summary").innerHTML =
+    "总分 <b>" + total + "</b> / 36　　红区 <b>" + redCount + "</b> 个维度　　黄区 <b>" + yellowCount + "</b> 个维度";
+
+  var listHtml = "";
+  DIMS.forEach(function(d){
+    var s = dimScores[d];
+    var zone = s >= 4 ? "red" : (s >= 2 ? "amber" : "green");
+    var zoneName = s >= 4 ? "红区" : (s >= 2 ? "黄区" : "绿区");
+    var color = zone === "red" ? "var(--red)" : (zone === "amber" ? "var(--amber)" : "var(--green)");
+    listHtml += '<div class="dimitem">' +
+      '<span class="dot" style="background:' + color + '"></span>' +
+      '<span class="nm">' + d + '</span>' +
+      '<span class="sc">' + s + ' / 6</span>' +
+      '<span class="zn" style="background:' + color + '22;color:' + color + '">' + zoneName + '</span>' +
+      '</div>';
+  });
+  document.getElementById("r-list").innerHTML = listHtml;
+
+  var verdictText;
+  if(redCount >= 3){
+    verdictText = "六维之中，您有 <b>" + redCount + " 个维度</b> 处于红区——防线密度和您的资产量级明显不匹配。建议尽快安排一次正式的六维体检，把优先级排清楚。";
+  } else if(redCount >= 1){
+    verdictText = "您有 <b>" + redCount + " 个维度</b> 处于红区，其余维度基本稳健。红区通常是最容易被忽略、也最容易被引爆的部分，建议优先安排一次针对性体检。";
+  } else if(yellowCount >= 2){
+    verdictText = "您暂无红区，但有 <b>" + yellowCount + " 个维度</b> 存在缺口。趁着还从容，是补齐这些缺口成本最低的时候。";
+  } else {
+    verdictText = "整体来看，您的家业防线基础不错。建议每年做一次复检，让六面墙始终保持在您能掌控的状态。";
+  }
+  document.getElementById("r-verdict").innerHTML = "<p>" + verdictText + "</p>";
+
+  window._lastResult = {dimScores: dimScores, total: total, redCount: redCount, yellowCount: yellowCount};
+
+  showScreen("result");
+}
+
+function drawRadar(dimScores){
+  var cx = 140, cy = 140, maxR = 100, maxScore = 6;
+  var svg = document.getElementById("radar");
+  var ns = "http://www.w3.org/2000/svg";
+  while(svg.firstChild) svg.removeChild(svg.firstChild);
+
+  function pt(i, r){
+    var angle = (Math.PI * 2 * i / 6) - Math.PI/2;
+    return [cx + r * Math.cos(angle), cy + r * Math.sin(angle)];
+  }
+
+  for(var ring=1; ring<=3; ring++){
+    var r = maxR * ring / 3;
+    var pts = [];
+    for(var i=0;i<6;i++){ pts.push(pt(i, r).join(",")); }
+    var poly = document.createElementNS(ns, "polygon");
+    poly.setAttribute("points", pts.join(" "));
+    poly.setAttribute("fill", "none");
+    poly.setAttribute("stroke", "rgba(201,169,97,0.28)");
+    poly.setAttribute("stroke-width", "0.7");
+    svg.appendChild(poly);
+  }
+
+  for(var i=0;i<6;i++){
+    var p = pt(i, maxR);
+    var line = document.createElementNS(ns, "line");
+    line.setAttribute("x1", cx); line.setAttribute("y1", cy);
+    line.setAttribute("x2", p[0]); line.setAttribute("y2", p[1]);
+    line.setAttribute("stroke", "rgba(201,169,97,0.28)");
+    line.setAttribute("stroke-width", "0.7");
+    svg.appendChild(line);
+  }
+
+  var dataPts = [];
+  DIMS.forEach(function(d, i){
+    var s = dimScores[d];
+    var r = maxR * (s / maxScore);
+    dataPts.push(pt(i, r));
+  });
+  var dataPoly = document.createElementNS(ns, "polygon");
+  dataPoly.setAttribute("points", dataPts.map(function(p){return p.join(",");}).join(" "));
+  dataPoly.setAttribute("fill", "rgba(201,169,97,0.28)");
+  dataPoly.setAttribute("stroke", "#E3CD97");
+  dataPoly.setAttribute("stroke-width", "2");
+  svg.appendChild(dataPoly);
+
+  dataPts.forEach(function(p){
+    var c = document.createElementNS(ns, "circle");
+    c.setAttribute("cx", p[0]); c.setAttribute("cy", p[1]); c.setAttribute("r", "3.5");
+    c.setAttribute("fill", "#E3CD97");
+    svg.appendChild(c);
+  });
+
+  DIMS.forEach(function(d, i){
+    var p = pt(i, maxR + 22);
+    var t = document.createElementNS(ns, "text");
+    t.setAttribute("x", p[0]); t.setAttribute("y", p[1]);
+    t.setAttribute("text-anchor", "middle");
+    t.setAttribute("dominant-baseline", "middle");
+    t.setAttribute("font-size", "13");
+    t.setAttribute("fill", "#F2EDDD");
+    t.setAttribute("font-family", "Songti SC, serif");
+    t.textContent = d;
+    svg.appendChild(t);
+  });
+}
+
+function copyResult(){
+  if(!window._lastResult){ return; }
+  var r = window._lastResult;
+  var lines = ["【家业风险六维快测结果】"];
+  DIMS.forEach(function(d){
+    var s = r.dimScores[d];
+    var zone = s >= 4 ? "红区" : (s >= 2 ? "黄区" : "绿区");
+    lines.push(d + "：" + s + "/6（" + zone + "）");
+  });
+  lines.push("总分：" + r.total + "/36，红区" + r.redCount + "个维度");
+  var text = lines.join("\n");
+
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(showToast, function(){ fallbackCopy(text); });
+  } else {
+    fallbackCopy(text);
+  }
+}
+
+function fallbackCopy(text){
+  var ta = document.createElement("textarea");
+  ta.value = text;
+  ta.style.position = "fixed";
+  ta.style.left = "-9999px";
+  document.body.appendChild(ta);
+  ta.select();
+  try{ document.execCommand("copy"); showToast(); }catch(e){}
+  document.body.removeChild(ta);
+}
+
+function showToast(){
+  var t = document.getElementById("toast");
+  t.textContent = "已复制，您可以粘贴发送";
+  t.classList.add("show");
+  setTimeout(function(){ t.classList.remove("show"); }, 2200);
+}
+
+function restart(){
+  showScreen("intro");
+}
+</script>
+
+</body>
+</html>
