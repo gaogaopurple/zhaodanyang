@@ -93,7 +93,7 @@
   h2.title{font-size:30px; text-align:center; letter-spacing:2px; margin-bottom:16px; color:var(--cream)}
   .title-rule{width:60px; height:2px; background:linear-gradient(90deg,transparent,var(--gold),transparent); margin:0 auto 46px}
 
-  /* ===== 六维模型（重点） ===== */
+  /* ===== 六维模型 ===== */
   .model{background:linear-gradient(180deg,rgba(23,64,47,.55),rgba(12,38,29,.55));
     border-top:1px solid rgba(201,168,106,.22); border-bottom:1px solid rgba(201,168,106,.22)}
   .model .lead{max-width:760px; margin:0 auto 40px; text-align:center; font-size:18px; color:var(--soft); line-height:2}
@@ -110,8 +110,6 @@
     font-size:16px; letter-spacing:1px; border:1px dashed rgba(201,168,106,.4);
     border-radius:6px; padding:16px}
   .plus-one b{color:var(--gold)}
-  .model-cta{text-align:center}
-  .model-cta .hint{color:var(--muted); font-size:14px; margin-top:14px; letter-spacing:1px}
 
   /* ===== 使命 ===== */
   .mission{max-width:820px; margin:0 auto; text-align:center; font-size:19px; color:var(--soft); line-height:2.1}
@@ -159,19 +157,46 @@
   .client-group .tags span{background:var(--panel); border:1px solid rgba(201,168,106,.22);
     border-radius:4px; padding:6px 13px; font-size:14px; color:var(--soft)}
 
-  /* ===== 照片墙 ===== */
+  /* ===== 照片墙（瀑布流，空位自动隐藏） ===== */
   .gallery{column-count:3; column-gap:16px; max-width:1040px; margin:0 auto}
   @media(max-width:760px){ .gallery{column-count:2; column-gap:12px} }
   @media(max-width:460px){ .gallery{column-count:1} }
   .photo{break-inside:avoid; -webkit-column-break-inside:avoid; margin:0 0 16px; border-radius:8px;
-    overflow:hidden; position:relative; display:block;
-    background:linear-gradient(135deg,#173f2e,#0e2a20); border:1px solid rgba(201,168,106,.25)}
+    overflow:hidden; display:block; border:1px solid rgba(201,168,106,.25)}
   .photo img{width:100%; height:auto; display:block}
-  .photo .ph{min-height:180px; display:flex; flex-direction:column;
-    align-items:center; justify-content:center; color:var(--muted); text-align:center; padding:10px}
-  .photo .ph b{font-size:26px; color:var(--gold); opacity:.55}
-  .photo .ph span{font-size:12px; margin-top:4px}
   .gallery-note{text-align:center; color:var(--muted); font-size:14px; margin-top:26px}
+
+  /* ===== 税务计算器 ===== */
+  .calc{max-width:640px; margin:0 auto; background:var(--panel); border:1px solid rgba(201,168,106,.3); border-radius:12px; padding:34px 34px}
+  .calc .field{margin-bottom:18px}
+  .calc label{display:block; color:var(--soft); font-size:14.5px; margin-bottom:8px; letter-spacing:.5px}
+  .calc input{width:100%; padding:12px 14px; border-radius:6px; border:1px solid rgba(201,168,106,.35);
+    background:rgba(0,0,0,.2); color:var(--cream); font-size:16px; font-family:inherit}
+  .calc input:focus{outline:none; border-color:var(--gold)}
+  .calc .hintline{color:var(--muted); font-size:12.5px; margin-top:6px}
+  .calc button{width:100%; margin-top:8px; padding:14px; border:none; border-radius:6px; cursor:pointer;
+    font-family:inherit; font-size:16px; letter-spacing:3px; font-weight:600;
+    background:linear-gradient(135deg,var(--gold),var(--gold-d)); color:#20180a}
+  .calc-result{margin-top:24px; border-top:1px dashed rgba(201,168,106,.35); padding-top:20px; display:none}
+  .calc-result.show{display:block}
+  .calc-result .row{display:flex; justify-content:space-between; align-items:center; padding:9px 0; font-size:16px; color:var(--soft)}
+  .calc-result .row b{color:var(--gold-l); font-size:22px}
+  .calc-note{max-width:640px; margin:18px auto 0; text-align:center; color:var(--muted); font-size:12.5px; line-height:1.9}
+
+  /* ===== 文章卡片 ===== */
+  .arts{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; max-width:1000px; margin:0 auto}
+  @media(max-width:760px){ .arts{grid-template-columns:1fr} }
+  .art{display:block; text-decoration:none; background:var(--panel); border:1px solid rgba(201,168,106,.25);
+    border-radius:10px; padding:26px 24px; transition:.25s}
+  .art:hover{border-color:var(--gold); transform:translateY(-3px)}
+  .art .tag{color:var(--gold); font-size:12px; letter-spacing:2px}
+  .art h3{color:var(--cream); font-size:18px; margin:10px 0 10px; line-height:1.5}
+  .art p{color:var(--muted); font-size:14px; line-height:1.7}
+  .art .more{color:var(--gold-l); font-size:13px; margin-top:14px; display:inline-block}
+
+  /* ===== 访问统计 ===== */
+  .visit{color:#6d7d72; font-size:13px; margin-bottom:10px; letter-spacing:.5px}
+  .visit b{color:var(--gold-l); font-weight:600}
 
   /* ===== 页脚 ===== */
   footer{background:rgba(0,0,0,.28); border-top:1px solid rgba(201,168,106,.25);
@@ -201,10 +226,11 @@
     <div class="brand">赵丹阳<span> · 私人财富律师</span></div>
     <ul>
       <li><a href="#model">六维模型</a></li>
-      <li><a href="#about">使命</a></li>
+      <li><a href="#tax">测算</a></li>
       <li><a href="#expertise">专长</a></li>
       <li><a href="#cases">战绩</a></li>
       <li><a href="#gallery">授课风采</a></li>
+      <li><a href="#articles">文章</a></li>
       <li><a href="#contact">联系</a></li>
     </ul>
   </div>
@@ -214,12 +240,12 @@
 <header class="hero">
   <div class="frame"></div>
   <div class="container">
-    <!-- 头像位：把形象照命名为 portrait.jpg 放入 photos 文件夹 -->
+    <!-- 头像位：形象照命名为 portrait.jpg，和 index.html 放同一层 -->
     <div class="portrait">
       <img src="portrait.jpg" alt="赵丹阳" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
       <div class="ph" style="display:none">
         <b>放置形象照</b>
-        <span>命名 portrait.jpg<br>放入 photos 文件夹</span>
+        <span>命名 portrait.jpg</span>
       </div>
     </div>
 
@@ -234,7 +260,6 @@
       <p class="lead">将「法律 + 金融」合二为一，为企业家找准风险、守住家业、成就传承。以自创的「家业守护六 + 一模型」，系统化诊断并守护高净值家族的每一面风险。</p>
       <div class="vision">愿景：助力 1000 个企业家，完成家业保护与传承。</div>
       <div class="cta">
-        <!-- 风险自测链接：指向同文件夹里的 quiz.html -->
         <a href="quiz.html" class="btn btn-gold" target="_blank">家业风险六维快测 · 免费自测</a>
         <a href="#contact" class="btn btn-ghost">预约咨询</a>
       </div>
@@ -252,7 +277,7 @@
   </div>
 </div>
 
-<!-- ===== 六维模型（核心） ===== -->
+<!-- ===== 六维模型 ===== -->
 <section class="block model" id="model">
   <div class="container">
     <div class="kicker">SIGNATURE FRAMEWORK · 核 心 方 法 论</div>
@@ -275,6 +300,38 @@
   </div>
 </section>
 
+<!-- ===== 税务计算器 ===== -->
+<section class="block" id="tax">
+  <div class="container">
+    <div class="kicker">TOOL · 实 用 工 具</div>
+    <h2 class="title">个人所得税 · 快速测算</h2>
+    <div class="title-rule"></div>
+    <div class="calc">
+      <div class="field">
+        <label>年度综合所得（税前，元）</label>
+        <input id="c-income" type="number" inputmode="numeric" placeholder="如 500000">
+      </div>
+      <div class="field">
+        <label>个人缴纳三险一金（元 / 年，可不填）</label>
+        <input id="c-social" type="number" inputmode="numeric" placeholder="如 60000">
+      </div>
+      <div class="field">
+        <label>专项附加扣除合计（元 / 年，可不填）</label>
+        <input id="c-special" type="number" inputmode="numeric" placeholder="如 24000">
+        <div class="hintline">子女教育、赡养老人、房贷利息、大病医疗等的年度合计</div>
+      </div>
+      <button onclick="calcTax()">开始测算</button>
+      <div class="calc-result" id="c-result">
+        <div class="row"><span>应纳税所得额</span><span id="r-taxable">—</span></div>
+        <div class="row"><span>适用税率</span><span id="r-rate">—</span></div>
+        <div class="row"><span>全年应纳个税</span><b id="r-tax">—</b></div>
+        <div class="row"><span>税后所得</span><span id="r-after">—</span></div>
+      </div>
+    </div>
+    <p class="calc-note">按现行个人所得税「综合所得」年度税率表估算（起征额 6 万元 / 年），结果仅供参考，具体以税务机关及专业筹划为准。<br>股权转让、跨境资产、家族传承等复杂税务筹划，欢迎预约咨询。</p>
+  </div>
+</section>
+
 <!-- ===== 使命 ===== -->
 <section class="block" id="about">
   <div class="container">
@@ -290,7 +347,7 @@
   </div>
 </section>
 
-<!-- ===== 专业背景（已去除学校） ===== -->
+<!-- ===== 专业背景 ===== -->
 <section class="block">
   <div class="container">
     <div class="kicker">CREDENTIALS · 专 业 背 景</div>
@@ -426,7 +483,7 @@
     <h2 class="title">课堂现场</h2>
     <div class="title-rule"></div>
     <div class="gallery">
-      <!-- 照片位：图片按 photos/1.jpg、2.jpg…… 命名放入 photos 文件夹；没放的位置会自动隐藏，不留空 -->
+      <!-- 照片位：图片按 1.jpg、2.jpg…… 命名放到和 index.html 同一层；没放的位置自动隐藏 -->
       <div class="photo"><img src="1.jpg" alt="授课照片" onerror="this.parentElement.style.display='none'"></div>
       <div class="photo"><img src="2.jpg" alt="授课照片" onerror="this.parentElement.style.display='none'"></div>
       <div class="photo"><img src="3.jpg" alt="授课照片" onerror="this.parentElement.style.display='none'"></div>
@@ -462,6 +519,55 @@
   </div>
 </section>
 
+<!-- ===== 文章观点 ===== -->
+<section class="block" id="articles">
+  <div class="container">
+    <div class="kicker">INSIGHTS · 观 点 文 章</div>
+    <h2 class="title">法商观点</h2>
+    <div class="title-rule"></div>
+    <div class="arts">
+      <!-- 文章卡片：复制一段 <a class="art">…</a>，改标题、摘要、href 链接即可加更多 -->
+      <a class="art" href="https://mp.weixin.qq.com/s/H6Y55Y7yiAdeiwIvARpkfQ" target="_blank">
+        <span class="tag">家族信托</span>
+        <h3>家族信托：有钱人的财富保命符，两个大坑千万不要踩</h3>
+        <p>家族信托是高净值家庭的财富"保命符"，但搭建时有两个大坑最容易踩中——附律师实务建议。</p>
+        <span class="more">阅读全文 →</span>
+      </a>
+      <a class="art" href="https://mp.weixin.qq.com/s/zH67dLfSjrgoYbMVof7utw" target="_blank">
+        <span class="tag">遗嘱传承</span>
+        <h3>不用公证、不多花律师费，合法有效的自书遗嘱怎么写</h3>
+        <p>一份合法有效的自书遗嘱，不用公证、不多花律师费，照着律师给的要点抄就行。</p>
+        <span class="more">阅读全文 →</span>
+      </a>
+      <a class="art" href="https://mp.weixin.qq.com/s/10B-6T0auulHY4s1cs64jg" target="_blank">
+        <span class="tag">跨境合规</span>
+        <h3>买台 B300 服务器被罚几千万：跨境企业主必看的守富红线</h3>
+        <p>一个真实案例，揭开跨境企业主最容易忽视的守富红线——不得不看。</p>
+        <span class="more">阅读全文 →</span>
+      </a>
+      <a class="art" href="https://mp.weixin.qq.com/s/VqT_hB9RFjqSEwVjukDuwg" target="_blank">
+        <span class="tag">离岸信托</span>
+        <h3>离岸信托到底是什么？开曼、香港、瑞士、迪拜一文读懂</h3>
+        <p>开曼、泽西、香港、瑞士、迪拜……全球主流离岸信托怎么选，一文读懂。</p>
+        <span class="more">阅读全文 →</span>
+      </a>
+      <a class="art" href="https://mp.weixin.qq.com/s/F5TRQQDJikwSK61m41PcKQ" target="_blank">
+        <span class="tag">公益传承</span>
+        <h3>李娟捐 480 万稿费设立基金会：财富的终点不是占有</h3>
+        <p>《我的阿勒泰》作者李娟捐出稿费设立向日葵基金会——财富的终点不是占有，而是对世界的终极温柔。</p>
+        <span class="more">阅读全文 →</span>
+      </a>
+      <a class="art" href="https://mp.weixin.qq.com/s/MP_mvIQbcU_tqOXkF1iyAA" target="_blank">
+        <span class="tag">财富智慧</span>
+        <h3>段永平捐 1 万股茅台：值得所有高净值企业家抄作业</h3>
+        <p>段永平捐 1 万股茅台的背后，藏着一句没说出口的话，值得所有高净值企业家借鉴。</p>
+        <span class="more">阅读全文 →</span>
+      </a>
+    </div>
+    <p class="calc-note">发布了新文章，复制一段卡片、改标题和公众号链接即可添加。</p>
+  </div>
+</section>
+
 <!-- ===== 联系 ===== -->
 <footer id="contact">
   <div class="container">
@@ -473,7 +579,7 @@
       <a href="tel:13088866687">电话 · 微信同号</a>
     </div>
 
-    <!-- 二维码：把图片命名为 wechat.jpg（个人微信）、mp.jpg（公众号）放到和 index.html 同一层；没放的会自动隐藏 -->
+    <!-- 二维码：图片命名 wechat.jpg（个人微信）、mp.jpg（公众号），放到和 index.html 同一层；没放的自动隐藏 -->
     <div class="qrs">
       <div class="qr">
         <img src="wechat.jpg" alt="微信二维码" onerror="this.parentElement.style.display='none'">
@@ -484,4 +590,41 @@
         <div class="cap">关注公众号<small>赵丹阳律师</small></div>
       </div>
     </div>
-    <p class="dis
+
+    <p class="disclaimer">本资料为一般性服务介绍，不构成法律意见；法律服务不承诺任何特定结果。咨询采用预约制，请提前联系确认时间。</p>
+    <div class="visit">
+      本站访问量 <b><span id="busuanzi_value_site_pv">…</span></b> 次 ·
+      访客数 <b><span id="busuanzi_value_site_uv">…</span></b> 人
+    </div>
+    <div class="copy">© 2026 赵丹阳 · 广东益道律师事务所主任律师 · zhaodanyang.vip</div>
+  </div>
+</footer>
+
+<!-- 访问统计（不蒜子，免费） -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!-- 税务计算器逻辑 -->
+<script>
+function calcTax(){
+  var inc=parseFloat(document.getElementById('c-income').value)||0;
+  var soc=parseFloat(document.getElementById('c-social').value)||0;
+  var spe=parseFloat(document.getElementById('c-special').value)||0;
+  var taxable=inc-60000-soc-spe;
+  if(taxable<0)taxable=0;
+  // 综合所得年度税率表：[下限, 税率, 速算扣除数]
+  var b=[[0,0.03,0],[36000,0.10,2520],[144000,0.20,16920],[300000,0.25,31920],[420000,0.30,52920],[660000,0.35,85920],[960000,0.45,181920]];
+  var rate=0,ded=0;
+  for(var i=b.length-1;i>=0;i--){ if(taxable>=b[i][0]){ rate=b[i][1]; ded=b[i][2]; break; } }
+  var tax=taxable*rate-ded; if(tax<0)tax=0;
+  var after=inc-tax;
+  function f(n){ return '¥'+Math.round(n).toLocaleString('zh-CN'); }
+  document.getElementById('r-taxable').textContent=f(taxable);
+  document.getElementById('r-rate').textContent=(rate*100)+'%';
+  document.getElementById('r-tax').textContent=f(tax);
+  document.getElementById('r-after').textContent=f(after);
+  document.getElementById('c-result').classList.add('show');
+}
+</script>
+
+</body>
+</html>
